@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
 
     this.apiService.login(body.toString()).subscribe(data => {
       window.sessionStorage.setItem('token', JSON.stringify(data));
-     // debugger ;
-      console.log('*** Affichage de data ***', data);
       this.router.navigate(['list-user']);
     }, error => {
         alert(error.error.error_description);
@@ -35,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-   // window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('token');
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
